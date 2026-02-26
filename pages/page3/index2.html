@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>信倍立(阿思尼布)AE更少、毒性更低、QOL更高，让更多患者可以”舒服”地追求更高的治疗目标</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+    <meta name="TopicID" content="XBL-1G_TOPIC_20260224_001">
+    <meta name="ChapterID" content="XBL-1G_CHAPTER_20260224_001.03">
+    <meta name="PageID" content="XBL-1G_PAGE_20260224_001.03.02">
+    <meta name="mcc_code" content="ASC0061504-125597">
+    <meta name="key_message" content="信倍立(阿思尼布)AE更少、毒性更低、QOL更高，让更多患者可以”舒服”地追求更高的治疗目标">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/toast.css">
+    <link rel="stylesheet" href="../../css/animate.css">
+
+    <style>
+        html {
+            font-size: 100px;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        @media screen and (max-width: 750px) {
+            html {
+                font-size: calc(100vw / 7.5); /* 750设计稿：1rem=100px */
+            }
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overscroll-behavior: contain;
+            -webkit-overflow-scrolling: touch;
+            position: relative;
+        }
+        a{font-size: 0.25rem;color: #333;font-style: normal;text-decoration: none;font-family: 微软雅黑}
+        
+        /* 核心：背景图容器作为唯一定位基准 */
+        .bd {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        #box {
+            width: 100%;
+            height: 100%;
+            position: relative; /* 所有子元素的定位基准 */
+            font-size: 0;
+            /* 新增：确保容器不超出可视区，子元素定位基于图片可视范围 */
+            overflow: hidden;
+        }
+        /* 背景图保持原有显示逻辑 */
+        #box img.bg-main {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* 核心：j1-j4 基于 #box 定位，调整坐标适配所有屏幕(解决只显示一个的问题) */
+        .click-area {
+            position: absolute;
+            width: 0.6rem;
+            height: 0.6rem;
+            cursor: pointer;
+            z-index: 10;
+            background: url("../../images/jia.png") no-repeat center center !important;
+            background-size: 100% 100% !important;
+            -webkit-tap-highlight-color: transparent;
+            pointer-events: auto;
+            touch-action: manipulation;
+            user-select: none;
+            /* 保留闪烁动画 */
+            animation: heartbeat 1.5s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+        /* 调整j1-j4坐标，适配750设计稿，确保所有j都显示在可视区 */
+       .j1 { right: 55%; top: 50%; }
+       .j2 { right: 9%; top: 50%; }
+       .j3 { right: 55%; top: 80%; }
+       .j4 { right: 9%; top: 80%; }
+
+        /* 返回按钮缩小尺寸+调整位置，避免超出页面 */
+        .back-btn {
+            position: absolute; /* 改为absolute，基于#box定位 */
+            bottom: 5%;         /* 替换原0.5rem → 百分比适配 */
+            right: 7%;          /* 替换原0.3rem → 百分比适配 */
+            width: 1rem;   
+            height: 1rem;
+            background: none !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            z-index: 9997;
+            cursor: pointer;
+            display: block !important;
+            /* 保留闪烁动画 */
+            animation: heartbeat 1.5s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+        .back-btn .back-text {display: none !important;}
+        .back-btn img {
+            width: 100% !important;
+            height: 100% !important;
+            display: block !important;
+            position: static !important;
+            transform: none !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        /* 提示框(保留原有逻辑) */
+        .tip{
+            position: fixed;
+            bottom: -0.5rem;
+            padding: 0.1rem 0;
+            width: 100%;
+            height: 0.8rem;
+            line-height: 0.8rem;
+            font-size: 0.25rem;
+            text-align: center;
+            background: white;
+            color:#333;
+            opacity: 0;
+            z-index: 9998;
+            transition: all 0.3s;
+            box-sizing: border-box;
+        }
+        .tip.show {bottom: 0; opacity: 0.8;}
+
+        /* 弹窗样式(保留原有) */
+        #custom-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 999999;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+        #custom-modal .img-wrap {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+        #custom-modal .img-wrap img {width: 100%; height: auto; display: block;}
+        #custom-modal .close-btn {
+            position: absolute;
+            top: 0.2rem;      
+            right: 0.2rem;    
+            width: 0.3rem;    
+            height: 0.3rem;   
+            background: url("../../images/close.png") no-repeat center center !important;
+            background-size: 100% 100% !important;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            padding: 0;
+            margin: 0;
+            color: transparent;
+            z-index: 100000000;
+        }
+
+        /* 闪烁动画(统一) */
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.2); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.2); }
+            70% { transform: scale(1); }
+        }
+
+        /* 冗余样式清理(避免干扰) */
+        .active ul{display: none;}
+        .pull-left, .my-gallery, .ft_tips {display: none;}
+    </style>
+
+    <script src="../../js/jquery-2.1.0.js"></script>
+    <script src="../../js/public.js?id=1"></script>
+    <script src="../../js/toast.js"></script>
+    <script src="https://qa.wecomfoundation.novartis.com.cn/content-lib/static/behaviorTracking.js"></script>
+</head>
+<body>
+<div class="bd">
+    <div id="box">
+        <!-- 背景图 -->
+        <img src="images/2.png?id=1" class="bg-main" alt="">
+        
+        <!-- j1-j4：基于#box定位，调整后全部显示 -->
+        <div class="click-area j1" data-src="images/jia1.png"></div>
+        <div class="click-area j2" data-src="images/jia2.png"></div>
+        <div class="click-area j3" data-src="images/jia3.png"></div>
+        <div class="click-area j4" data-src="images/jia4.png"></div>
+
+        <!-- 返回按钮：缩小尺寸+调整位置，不超出页面 -->
+        <div class="back-btn" id="backBtn">
+            <span class="back-text">返回<br>疾病</span>
+            <img src="../../images/back.png" alt="返回">
+        </div>
+    </div>
+
+    <!-- 弹窗 -->
+    <div id="custom-modal">
+        <div class="img-wrap">
+            <div class="close-btn"></div>
+            <img id="modal-img" src="" alt="">
+        </div>
+    </div>
+</div>
+
+
+<script>
+    window.addEventListener('load', function() {
+        window.scrollTo(0, 0);
+        enableSwipeJump();
+    });
+
+    // 全局变量
+    let touchLock = false; 
+    let startY = 0;       
+    let isTouching = false;
+    const tip = document.querySelector('.tip');
+    // 路径配置
+    const prevPageUrl = "../page3/index.html";  // 下滑跳转上一页
+    const homePageUrl = "../page1/index.html"; // 点击返回按钮跳首页
+
+    // 提示框
+    function showTip() {if (tip) tip.classList.add('show');}
+    function hideTip() {if (tip) tip.classList.remove('show');}
+
+    // 你提供的正确滑动逻辑
+    function enableSwipeJump() {
+        document.addEventListener('touchstart', (e) => {
+            if (touchLock) return;
+            startY = e.touches[0].pageY;
+            isTouching = true;
+            showTip();
+        }, { passive: true });
+
+        document.addEventListener('touchend', e => {
+            if (!isTouching || touchLock) {
+                isTouching = false;
+                return;
+            }
+            touchLock = true;
+
+            const endY = e.changedTouches[0].pageY;
+            const deltaY = startY - endY;
+
+            if (deltaY > 15) {
+                hideTip();
+            } else if (deltaY < -10) {
+                hideTip();
+                const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                if (scrollTop <= 50) {
+                    window.location.href = prevPageUrl;  
+                }
+            }
+
+            setTimeout(() => {
+                touchLock = false;
+                isTouching = false;
+            }, 100);
+        }, { passive: true });
+
+        document.addEventListener('touchcancel', () => {
+            isTouching = false;
+            touchLock = false;
+            hideTip();
+        }, { passive: true });
+    }
+
+    // 弹窗+返回按钮逻辑(保留原有)
+    $(document).ready(function() {
+        const $modal = $('#custom-modal');
+        const $modalImg = $('#modal-img');
+        const $closeBtn = $('.close-btn');
+
+        // 点击j1-j4打开弹窗
+        $('.click-area').on('touchstart', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const src = $(this).data('src');
+            if (src) {
+                $modalImg.attr('src', src);
+                $modal.css('display', 'flex');
+            }
+        });
+
+        // 关闭弹窗
+        $closeBtn.on('touchstart', () => {$modal.hide(); $modalImg.attr('src', '');});
+        $modal.on('touchstart', function(e) {
+            if (e.target === this) {$modal.hide(); $modalImg.attr('src', '');}
+        });
+
+        // 点击返回按钮跳首页
+        $('#backBtn').on('touchstart', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            window.location.href = homePageUrl;
+        });
+    });
+</script>
+</body>
+</html>

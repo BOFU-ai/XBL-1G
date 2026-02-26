@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSH 2025推荐：患者管理的重点在于预防和(或)减轻毒性反应，同时提高生活质量</title>
+    <!-- 对齐正常页面：恢复viewport-fit=cover，保持配置一致 -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+    <meta name="TopicID" content="XBL-1G_TOPIC_20260224_001">
+    <meta name="ChapterID" content="XBL-1G_CHAPTER_20260224_001.03">
+    <meta name="PageID" content="XBL-1G_PAGE_20260224_001.03.01">
+    <meta name="mcc_code" content="ASC0061504-125597">
+    <meta name="key_message" content="CSH 2025推荐：患者管理的重点在于预防和(或)减轻毒性反应，同时提高生活质量">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/toast.css">
+    <link rel="stylesheet" href="../../css/animate.css">
+
+    <style>
+        /* 完全对齐正常页面：统一rem基准 + 初始化样式 */
+        html {
+            font-size: 100px; /* 1rem=100px，适配750设计稿 */
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* 禁止横向滚动 */
+        }
+        /* 适配手机端rem换算，确保和正常页面一致 */
+        @media screen and (max-width: 750px) {
+            html {
+                font-size: calc(100vw / 7.5);
+            }
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            margin: 0; /* 移除默认边距 */
+            padding: 0; /* 移除默认内边距 */
+            overscroll-behavior: contain; /* 阻止边界弹性滚动 */
+            -webkit-overflow-scrolling: touch; /* 优化iOS滚动体验 */
+            position: relative; /* 作为fixed元素参考 */
+        }
+        a{
+            font-size: 0.25rem;
+            color: #333;
+            font-style: normal;
+            text-decoration: none;
+            font-family: 微软雅黑;
+        }
+        /* 主容器：完全对齐正常页面，强制铺满屏幕 */
+        .bd {
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* 禁止容器内滚动 */
+            position: relative;
+        }
+        /* 核心修复：恢复正常页面的图片样式，消除黑边 */
+        .bd img{
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* 完整显示图片，无裁剪 */
+            display: block; /* 移除图片下方空白 */
+        }
+        .active ul{
+            display: flex;
+            justify-content: space-around;
+            margin-top: 0.71rem;
+        }
+        .active ul>li{
+            width: 12.5%;
+        }
+        /* 提示框样式：完全对齐正常页面 */
+        .tip{
+            position: fixed;
+            bottom: -0.5rem;
+            padding: 0.1rem 0rem;
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            transition: all 0.3s ease;
+            width: 100%;
+            height: 0.8rem;
+            line-height: 0.8rem; /* 单行垂直居中 */
+            font-size: 0.25rem;
+            text-align: center;
+            background: white;
+            color:#333;
+            opacity: 0;
+            z-index: 9998;
+            box-sizing: border-box; /* 避免padding撑大宽度 */
+        }
+        /* 显示时的样式 */
+        .show {
+            bottom: 0rem;
+            opacity: 0.8;
+        }
+        #box{
+            position: relative;
+            font-size: 0px;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .ft_tips {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #666;
+            font-size: 12px;
+            text-align: center;
+            font-weight: 400;
+            display: none; /* 非核心元素隐藏，避免占空间 */
+        }
+    </style>
+    <script src="../../js/jquery-2.1.0.js"></script>
+    <script src="../../js/public.js?id=1"></script>
+    <script src="../../js/toast.js"></script>
+    <script src="../../js/image-modal.js?id=2"></script>
+    <script src="https://qa.wecomfoundation.novartis.com.cn/content-lib/static/behaviorTracking.js"></script>
+</head>
+<body>
+ <div class="bd" id="box">
+    <img src="images/1.png?id=1" alt="">
+ </div>
+ <!-- 恢复提示框，确保和正常页面结构一致 -->
+ 
+
+<script>
+    // 全局配置：当前页面是否启用滑动跳转
+    const enableSwipeDownJump = true;  
+    const enableSwipeUpJump = true;
+    // 定义缺失的touchLock变量(用于防止重复触发)
+    let touchLock = false;    
+
+    // 图片弹窗初始化
+    const modal = new ImageModal({
+        backdropBlur: false,
+        closeOnEscape:false,
+        backdropOpacity:0.5,
+        onBeforeOpen: function() {console.log('模态框即将打开');},
+        onAfterClose: function() {console.log('模态框已关闭');}
+    });
+
+    const tip = document.querySelector('.tip');
+    let isShowing = false;
+    let startY = 0;
+    let isTouching = false;
+
+    // 修改：增加tip非空判断，避免报错中断逻辑
+    function showTip() {
+        if(!enableSwipeUpJump || !tip) return; 
+        isShowing = true; 
+        tip.classList.add('show');
+    }
+    function hideTip() {
+        if(!tip) return;
+        isShowing = false; 
+        tip.classList.remove('show');
+    }
+
+    // 完全对齐正常页面：精准的“是否滑到底部”判断
+    function isPageBottom() {
+        // 因为容器是100%视口高度，直接返回true(始终处于底部)
+        return true;
+        /* 若图片高度超过视口，可启用原逻辑：
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        const clientHeight = document.documentElement.clientHeight || window.innerHeight;
+        const scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+        return scrollTop + clientHeight >= scrollHeight - 10;
+        */
+    }
+
+    function enableSwipeJump() {
+        // 修改：将passive改为true，避免浏览器警告
+        document.addEventListener('touchstart', (e) => {
+            if (touchLock) return;
+            startY = e.touches[0].pageY;
+            isTouching = true;
+            // 新增：触摸时显示提示框，提升体验
+            showTip();
+        }, { passive: true });
+
+        document.addEventListener('touchend', e => {
+            if (!isTouching || touchLock) {
+                isTouching = false;
+                return;
+            }
+
+            touchLock = true;
+            const endY = e.changedTouches[0].pageY;
+            const deltaY = startY - endY;
+
+            // 核心逻辑：只有上滑超过15px才跳转(已处于全屏底部)
+            if (deltaY > 15) {
+                hideTip();
+                setTimeout(() => {
+                    window.location.href = "../page3/index2.html";
+                }, 50);
+            } else {
+                // 下滑/滑动距离不足，隐藏提示框
+                if (deltaY < -10) {
+                    hideTip();
+                }
+            }
+
+            setTimeout(() => {
+                touchLock = false;
+                isTouching = false;
+            }, 100);
+        }, { passive: true });
+
+        document.addEventListener('touchcancel', (e) => {
+            isTouching = false;
+            touchLock = false;
+            hideTip(); // 触摸中断时隐藏提示框
+        }, { passive: true });
+    }
+
+    // 完全对齐正常页面：仅保留基础加载逻辑，移除多余的适配函数
+    window.addEventListener('load', function() {
+        // 强制滚动到顶部，确保初始显示完整
+        window.scrollTo(0, 0);
+        enableSwipeJump();
+    });
+</script>
+
+</body>
+</html>
